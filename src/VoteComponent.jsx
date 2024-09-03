@@ -22,6 +22,7 @@ const LogIn = ( {matricNumber, setMatricNumber, password, setPassword, level, se
                     value={level}
                     onChange={(e) => setLevel(e.target.value)}
                 >
+                    <option value="NONE">NONE</option>
                     <option value="ND1">ND1</option>
                     <option value="HND1">HND1</option>
                 </select><br />
@@ -55,7 +56,7 @@ const Vote = ( { handleCandidateSelection, selectedCandidates, handleVoteSubmiss
     return(
         <div className="vote-content">
             <h1>cast your vote</h1>
-            <p className="pstyle"> once you've submit your vote, you'll be unable to make another vote !!! </p>
+            <p className="pstyle">"Once you've submitted your vote, you'll be unable to make another vote!!!" </p>
             <p> {message} </p>
             <div className="vote-list">
                 <ul>
@@ -104,22 +105,23 @@ const VoteComponent = () => {
                 body: JSON.stringify({ matricNumber, level, nacosId, password })
             });
     
-            if (!response.ok) {
-                throw new Error('Unable to login: ' + response.status);
-            }
-    
             const data = await response.json();
     
-            if (data.message === 'Login successful') {
+            if (!response.ok) {
+                console.error('Login error:', data.message || response.status);
+                throw new Error(data.message || `Unable to login: ${response.status}`);
+            }
+    
+            if (response.status === 200) {
                 isPending(true);
             } else {
-                console.error('Unexpected response message: ' + data.message);
+                console.error('Unexpected response message:', data.message);
             }
         } catch (error) {
-            console.error('Login error: ' + error.message);
-            console.log(error);
+            console.error('Login error:', error.message);
         }
     };
+    
 
     /* vote component */
     useEffect(() => {
@@ -159,48 +161,71 @@ const VoteComponent = () => {
     };
 
 
-    const handleVoteSubmission = () => {
-        const updateVotesPromise = selectedCandidates.map(async candidateId => {
-            const candidate = candidates.find(c => c.id === candidateId);
-           try {
-                const response = await fetch(`https://voting-api-zv3h.onrender.com/api/vote${candidate._id}`, {
-                    method: 'POST',
-                    headers: {
-                        "Content-Type": 'application/json'
-                    },
-                    body: JSON.stringify({ votes: candidate.votes})
-                });
-
-                if (!response.ok) {
-                    switch (response.status) {
-                        case 400:
-                            navigate('/');
-                            break;
-                        case 500:
-                            setMessage(response.message);
-                            break;
-                        default:
-                            throw new Error(`Unexpected Error: ${response.status}`);
-                    }
+     const handleVoteSubmission = async (candidate) => {
+        try {
+            const votes = selectedCandidates.map(candidateId => {
+                const candidate = candidates.find(c => c._id === candidateId);
+                if (!candidate) {
+                    console.error(`candidate with the ID ${candidateId} not found`);
+                    return null;
                 }
 
-                const data = await response.json();
+                return {
+                    candidateId: candidate._id,
+                    position: candidate.position,
+                };
 
-                return data;
-           } catch (error) {
-             console.error(error.message);
-           }
-        });
+            }).filter(vote => vote !== null);
 
-        Promise.all(updateVotesPromise)
-        .then(() => {
-            alert('votes cast sucessfully');
-            setTimeout(() => {
-                isPending(false);
-                navigate('/');
-            }, 2000);
-        })
-        .catch(error => console.error('error casting vote: ', error));
+            if (votes.length === 0) {
+                console.error('No valid votes to submit.');
+                return;
+            }
+
+            const response = await fetch('https://voting-api-zv3h.onrender.com/api/vote', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": 'application/json'
+                },
+                body: JSON.stringify({
+                    nacosId,
+                    votes,
+                })
+            }); 
+
+            const contentType = response.headers.get("content-type");
+
+            // Handle non-JSON responses
+            if (!contentType || !contentType.includes("application/json")) {
+                const text = await response.text();
+                console.error("Received non-JSON response:", text);
+                return;
+            }
+
+            const responseData = await response.json();
+
+            if (!response.ok) {
+                switch (response.status) {
+                    case 400:
+                        console.error(responseData.error);
+                        navigate('/');
+                        break;
+                    case 500:
+                        setMessage(responseData.error || 'Server error');
+                        break;
+                    default:
+                        throw new Error(`Unexpected Error: ${response.status}`);
+                }
+            } else {
+                alert('Votes cast successfully');
+                setTimeout(() => {
+                    isPending(false);
+                    navigate('/');
+                }, 1000);
+            }
+        } catch (error) {
+            console.error("Voting submission error: " + error.message);
+        }
     };
 
     return ( 
