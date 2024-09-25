@@ -9,11 +9,18 @@ const LogIn = ( {matricNumber, setMatricNumber, password, setPassword, level, se
         <div className="login">
             <form onSubmit={handleSubmit}>
                 <p className="caution">all ND2 PT should choose Nd1</p>
-                <label htmlFor="matricNumber">matric number</label> <br />
-                <input type="number"
+                <label htmlFor="matricNumber">matric number / form number</label> <br /> {/* kindly change this to matric number alone, once youve have a correct data  */}
+                <input type="text"
                     required
                     value={matricNumber}
                     onChange={(e) => setMatricNumber(e.target.value)}
+                /> <br /> 
+
+                <label htmlFor="nacosId">nacos id</label> <br />
+                <input type="text"
+                    required
+                    value={nacosId}
+                    onChange={(e) => setNacosId(e.target.value)}
                 /> <br />
 
                 <label htmlFor="level">level</label> <br />
@@ -33,15 +40,8 @@ const LogIn = ( {matricNumber, setMatricNumber, password, setPassword, level, se
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 /> <br />
-                
-                <label htmlFor="nacosId">nacos id</label> <br />
-                <input type="text"
-                    required
-                    value={nacosId}
-                    onChange={(e) => setNacosId(e.target.value)}
-                /> <br />
 
-                <p>{ message }</p> <br />
+                <p className="message">{ message }</p> <br />
 
                 <button>log in</button>
             </form>
@@ -102,7 +102,7 @@ const VoteComponent = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ matricNumber, level, nacosId, password })
+                body: JSON.stringify({ level, nacosId, password }) //matric number was removed cause of issue on the db (once a correct data as been given matric number should be implemented)
             });
     
             const data = await response.json();
@@ -114,8 +114,11 @@ const VoteComponent = () => {
     
             if (response.status === 200) {
                 isPending(true);
+                setMessage("login successfully");
+                console.log( matricNumber);
             } else {
                 console.error('Unexpected response message:', data.message);
+                setMessage("please double-check your login details. ensure both password and Nacos Id are correct");
             }
         } catch (error) {
             console.error('Login error:', error.message);
