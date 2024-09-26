@@ -51,7 +51,7 @@ const Home = () => {
     };
 
     const handleClick = () => {
-        navigate('/vote')
+        /* navigate('/vote') */
     }
 
     return (
