@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
-    const [candidates, setCandidates] = useState([]);
     const [groupedCandidates, setGroupedCandidates] = useState({});
     const navigate = useNavigate();
 
@@ -11,40 +10,35 @@ const Home = () => {
         const dashBoard = async () => {
             try {
                 const response = await fetch('https://voting-api-zv3h.onrender.com/api/candidates/all');
-
+    
                 const contentType = response.headers.get("content-type");
                 if (!contentType || !contentType.includes("application/json")) {
                     throw new Error('Expected JSON, but got: ' + contentType);
                 }
-
+    
                 if (!response.ok) {
-                    throw new Error ("unable to fetch data: " + response.status)
+                    throw new Error("Unable to fetch data: " + response.status);
                 }
     
                 const data = await response.json();
-                setCandidates(data);
-                groupCandidates(data);
-                console.log(candidates);
-
+                console.log("Fetched data:", data);
+    
+                if (typeof data === 'object' && !Array.isArray(data)) {
+                    setGroupedCandidates(data);
+                } else {
+                    console.error("Unexpected data format:", data);
+                }
+    
             } catch (error) {
-                console.error("error message: " + error.message);
-                console.log(error);
+                console.error("Error message: " + error.message);
             }
         }
-
+    
         dashBoard();
     }, []);
+    
+    
 
-/* 
-    fetch('https://voting-api-zv3h.onrender.com/api/leaderboard')
-    .then(response => response.json())
-    .then(data => {
-        setCandidates(data);
-        groupCandidates(data);
-        console.log(candidates);
-    })
-    .catch(error => console.error('Error fetching data:', error));
- */
     const groupCandidates = (candidates) => {
         const grouped = candidates.reduce((acc, candidate) => {
             if (!acc[candidate.position]) {

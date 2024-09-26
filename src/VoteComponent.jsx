@@ -57,7 +57,6 @@ const Vote = ( { handleCandidateSelection, selectedCandidates, handleVoteSubmiss
         <div className="vote-content">
             <h1>cast your vote</h1>
             <p className="pstyle">"Once you've submitted your vote, you'll be unable to make another vote!!!" </p>
-            <p> {message} </p>
             <div className="vote-list">
                 <ul>
                     {candidates.map(candidate => (
