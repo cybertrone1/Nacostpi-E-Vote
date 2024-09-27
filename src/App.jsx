@@ -14,7 +14,7 @@ function App() {
         <div className="home-content">
           <Routes>
             < Route exact path="/" element={< Home />} />
-            < Route exact path="/vote" element={ < VoteComponent /> } />
+            {/* < Route exact path="/vote" element={ < VoteComponent /> } /> */}
             < Route exact path="/guideline" element={ < GuideComponent /> } />
           </Routes>
         </div>
