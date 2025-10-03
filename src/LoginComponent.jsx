@@ -1,5 +1,5 @@
 import { useState} from "react";
-import apiClient from "./ApiClient";
+import apiClient from "./api/ApiClient";
 import { useNavigate } from "react-router-dom";
 import FooterComponent from "./FooterComponent";
 import hideIcon from "./assets/hideIcon.svg"

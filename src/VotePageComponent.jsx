@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import FooterComponent from "./FooterComponent";
-import apiClient from "./ApiClient";
+import apiClient from "./api/ApiClient";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
