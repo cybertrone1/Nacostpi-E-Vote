@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import FooterComponent from './FooterComponent';
+import { setNacosId } from './redux/slice/voterSlice';
+import { useDispatch } from 'react-redux';
 
 const Home = () => {
     const [groupedCandidates, setGroupedCandidates] = useState({});
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const dashBoard = async () => {
@@ -32,6 +35,8 @@ const Home = () => {
             } catch (error) {
                 console.error("Error message: " + error.message);
             }
+
+            dispatch(setNacosId(""));
         }
     
         dashBoard();
@@ -51,13 +56,13 @@ const Home = () => {
     };
 
     const handleClick = () => {
-      /*   navigate('/vote') */
+       navigate('/login')
     }
 
     return (
         <div className="dashboard-content">
+            <h1>Dashboard</h1>
             <div className="dashBoard">
-                <h1>Dashboard</h1>
                 {Object.entries(groupedCandidates).map(([position, candidates]) => (
                     <div key={position} className="post-section">
                         <h2>{position}</h2>
@@ -71,7 +76,9 @@ const Home = () => {
                     </div>
                 ))}
             </div>
-            <button onClick={handleClick}>Cast your vote</button>
+            <button onClick={handleClick}>Click here to Vote</button>
+
+            <FooterComponent />
         </div>
     );
 };

@@ -1,15 +1,30 @@
 const FooterComponent = () => {
     return ( 
         <div className="footer-component">
-        <h2> <span><img src="" alt="" /></span> 2024 INEC COMMITEE</h2>
+            <h2>2024 INEC COMMITEE</h2>
 
-        <div className="developers">
-            <h5>developers</h5>
-            <ul>
-                <li><p className="developer-text">hamzat abdulaleem i.</p></li>
-                <li><p className="developer-text">babarinde ayomide e.</p></li>
-            </ul>
-        </div>
+            <h4>Meet the team</h4>
+            <section>
+                <div>
+                    <h5>INEC Officials</h5>
+                    <ul>
+                        <li>hamzat abdulaleem i.</li>
+                        <li>babarinde ayomide e.</li>
+                        <li>hamzat abdulaleem i.</li>
+                        <li>babarinde ayomide e.</li>
+                        <li>hamzat abdulaleem i.</li>
+                        <li>babarinde ayomide e.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5>developers</h5>
+                    <ul>
+                        <li>hamzat abdulaleem i.</li>
+                        <li>babarinde ayomide e.</li>
+                    </ul>
+                </div>
+            </section>
         </div>
      );
 }
