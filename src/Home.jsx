@@ -26,8 +26,8 @@ const Home = () => {
                 const data = await response.json();
                 console.log("Fetched data:", data);
     
-                if (typeof data === 'object' && !Array.isArray(data)) {
-                    setGroupedCandidates(data);
+                if (typeof data?.candidates === 'object' && !Array.isArray(data)) {
+                    setGroupedCandidates(data?.candidates);
                 } else {
                     console.error("Unexpected data format:", data);
                 }
