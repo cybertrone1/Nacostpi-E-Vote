@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://voting-api-zv3h.onrender.com/api";
+const BASE_URL = "https://nacos-voting-api.onrender.com/api";
 
 const apiClient = {
 

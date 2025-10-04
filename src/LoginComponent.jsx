@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useEffect, useState} from "react";
 import apiClient from "./api/ApiClient";
 import { useNavigate } from "react-router-dom";
 import FooterComponent from "./FooterComponent";
@@ -18,6 +18,14 @@ const LoginComponent = () => {
     const [message, setMessage] = useState("");
     const [typeStatus, SetTypeStatus] = useState(false);
 
+    useEffect(() => {
+        const resetNacosId = () => {
+            dispatch(setNacosId(""));
+        }
+
+        resetNacosId();
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -28,7 +36,7 @@ const LoginComponent = () => {
 
         if (response?.status === 200) {
             dispatch(setNacosId(nacosId));
-            navigate("/vote");
+            navigate("/vote-page");
         } else if(response?.status === 400) {
             setMessage("Login failed. Please check your credentials.");
         } else if(response?.status === 500){

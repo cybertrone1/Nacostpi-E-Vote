@@ -12,7 +12,7 @@ const Home = () => {
     useEffect(() => {
         const dashBoard = async () => {
             try {
-                const response = await fetch('https://voting-api-zv3h.onrender.com/api/candidates/all');
+                const response = await fetch('https://nacos-voting-api.onrender.com/api/candidates/all');
     
                 const contentType = response.headers.get("content-type");
                 if (!contentType || !contentType.includes("application/json")) {
