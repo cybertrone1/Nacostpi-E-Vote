@@ -253,8 +253,8 @@ const VotePageComponent = () => {
                     <div className="posts">
                         <h2>Software Dir. 1</h2>
                         <div className="postList">
-                            {sortCandidate("Software director 1") && Array.isArray(sortCandidate("Software director 1")) && sortCandidate("Software director 1").length > 0 ? (
-                                sortCandidate("Software director 1")?.map(candidate => (
+                            {sortCandidate("Software Director 1") && Array.isArray(sortCandidate("Software Director 1")) && sortCandidate("Software Director 1").length > 0 ? (
+                                sortCandidate("Software Director 1")?.map(candidate => (
                                     <li key={candidate?._id} >
                                         <img src={candidate?.photoUrl} alt={candidate?.name} />
                                         <p> {candidate?.name} </p>
@@ -301,8 +301,8 @@ const VotePageComponent = () => {
                     <div className="posts">
                         <h2>Social dir. 1</h2>
                         <div className="postList">
-                            {sortCandidate("Social director 1") && Array.isArray(sortCandidate("Social director 1")) && sortCandidate("Social director 1").length > 0 ? (
-                                sortCandidate("Social director 1")?.map(candidate => (
+                            {sortCandidate("Social Director 1") && Array.isArray(sortCandidate("Social Director 1")) && sortCandidate("Social Director 1").length > 0 ? (
+                                sortCandidate("Social Director 1")?.map(candidate => (
                                     <li key={candidate?._id} >
                                         <img src={candidate?.photoUrl} alt={candidate?.name} />
                                         <p> {candidate?.name} </p>
@@ -325,8 +325,8 @@ const VotePageComponent = () => {
                     <div className="posts">
                         <h2>Ass. Social dir.</h2>
                         <div className="postList">
-                            {sortCandidate("Assistance Social director") && Array.isArray(sortCandidate("Assistance Social director")) && sortCandidate("Assistance Social director").length > 0 ? (
-                                sortCandidate("Assistance Social director")?.map(candidate => (
+                            {sortCandidate("Social Director 2") && Array.isArray(sortCandidate("Social Director 2")) && sortCandidate("Social Director 2").length > 0 ? (
+                                sortCandidate("Social Director 2")?.map(candidate => (
                                     <li key={candidate?._id} >
                                         <img src={candidate?.photoUrl} alt={candidate?.name} />
                                         <p> {candidate?.name} </p>
@@ -349,8 +349,8 @@ const VotePageComponent = () => {
                     <div className="posts">
                         <h2>Sport dir. 1</h2>
                         <div className="postList">
-                            {sortCandidate("Sport director 1") && Array.isArray(sortCandidate("Sport director 1")) && sortCandidate("Sport director 1").length > 0 ? (
-                                sortCandidate("Sport director 1")?.map(candidate => (
+                            {sortCandidate("Sport Director 1") && Array.isArray(sortCandidate("Sport Director 1")) && sortCandidate("Sport Director 1").length > 0 ? (
+                                sortCandidate("Sport Director 1")?.map(candidate => (
                                     <li key={candidate?._id} >
                                         <img src={candidate?.photoUrl} alt={candidate?.name} />
                                         <p> {candidate?.name} </p>
@@ -373,8 +373,8 @@ const VotePageComponent = () => {
                     <div className="posts">
                         <h2>Ass. Sport dir.</h2>
                         <div className="postList">
-                            {sortCandidate("Assistance Sport director") && Array.isArray(sortCandidate("Assistance Sport director")) && sortCandidate("Assistance Sport director").length > 0 ? (
-                                sortCandidate("Assistance Sport director")?.map(candidate => (
+                            {sortCandidate("Sport Director 2") && Array.isArray(sortCandidate("Sport Director 2")) && sortCandidate("Sport Director 2").length > 0 ? (
+                                sortCandidate("Sport Director 2")?.map(candidate => (
                                     <li key={candidate?._id} >
                                         <img src={candidate?.photoUrl} alt={candidate?.name} />
                                         <p> {candidate?.name} </p>
@@ -421,8 +421,8 @@ const VotePageComponent = () => {
                     <div className="posts">
                         <h2>Ass. Welfare Dir.</h2>
                         <div className="postList">
-                            {sortCandidate("Assistance Welfare Director") && Array.isArray(sortCandidate("Assistance Welfare Director")) && sortCandidate("Assistance Welfare Director").length > 0 ? (
-                                sortCandidate("Assistance Welfare Director")?.map(candidate => (
+                            {sortCandidate("Welfare Director 2") && Array.isArray(sortCandidate("Welfare Director 2")) && sortCandidate("Welfare Director 2").length > 0 ? (
+                                sortCandidate("Welfare Director 2")?.map(candidate => (
                                     <li key={candidate?._id} >
                                         <img src={candidate?.photoUrl} alt={candidate?.name} />
                                         <p> {candidate?.name} </p>
@@ -445,8 +445,8 @@ const VotePageComponent = () => {
                     <div className="posts">
                         <h2>PRO 1</h2>
                         <div className="postList">
-                            {sortCandidate("Public Relation Officer (PRO) 1") && Array.isArray(sortCandidate("Public Relation Officer (PRO) 1")) && sortCandidate("Public Relation Officer (PRO) 1").length > 0 ? (
-                                sortCandidate("Public Relation Officer (PRO) 1")?.map(candidate => (
+                            {sortCandidate("Public Relations Officer (PRO 1)") && Array.isArray(sortCandidate("Public Relations Officer (PRO 1)")) && sortCandidate("Public Relations Officer (PRO 1)").length > 0 ? (
+                                sortCandidate("Public Relations Officer (PRO 1)")?.map(candidate => (
                                     <li key={candidate?._id} >
                                         <img src={candidate?.photoUrl} alt={candidate?.name} />
                                         <p> {candidate?.name} </p>
@@ -469,8 +469,8 @@ const VotePageComponent = () => {
                     <div className="posts">
                         <h2>PRO 2</h2>
                         <div className="postList">
-                            {sortCandidate("Public Relation Officer (PRO) 2") && Array.isArray(sortCandidate("Public Relation Officer (PRO) 2")) && sortCandidate("Public Relation Officer (PRO) 2").length > 0 ? (
-                                sortCandidate("Public Relation Officer (PRO) 2")?.map(candidate => (
+                            {sortCandidate("Public Relations Officer (PRO 2)") && Array.isArray(sortCandidate("Public Relations Officer (PRO 2)")) && sortCandidate("Public Relations Officer (PRO 2)").length > 0 ? (
+                                sortCandidate("Public Relations Officer (PRO 2)")?.map(candidate => (
                                     <li key={candidate?._id} >
                                         <img src={candidate?.photoUrl} alt={candidate?.name} />
                                         <p> {candidate?.name} </p>
