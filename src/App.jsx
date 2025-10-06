@@ -14,9 +14,9 @@ function App() {
         <div className="home-content">
           <Routes>
             < Route exact path="/" element={< Home />} />
-            < Route exact path="/vote-page" element={ < VotePageComponent /> } />
+{/*             < Route exact path="/vote-page" element={ < VotePageComponent /> } /> */}
             < Route exact path="/guideline" element={ < GuideComponent /> } />
-            < Route exact path="/login" element={ < LoginComponent /> } />
+{/*             < Route exact path="/login" element={ < LoginComponent /> } /> */}
           </Routes>
         </div>
       </div>
