@@ -55,9 +55,9 @@ const Home = () => {
         setGroupedCandidates(grouped);
     };
 
-/*     const handleClick = () => {
-       navigate('/login')
-    } */
+    const handleClick = () => {
+       /* navigate('/login') */
+    }
 
     return (
         <div className="dashboard-content">
