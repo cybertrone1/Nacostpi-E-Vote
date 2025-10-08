@@ -56,7 +56,7 @@ const Home = () => {
     };
 
     const handleClick = () => {
-       /* navigate('/login') */
+       navigate('/login')
     }
 
     return (
