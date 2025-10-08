@@ -203,6 +203,7 @@ form input{
   border: none;
   outline: none;
   border-radius: 10px;
+  text-transform: none;
 }
 form .password-ctn{
   width: 100%;

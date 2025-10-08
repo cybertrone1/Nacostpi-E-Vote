@@ -18,14 +18,6 @@ const LoginComponent = () => {
     const [message, setMessage] = useState("");
     const [typeStatus, SetTypeStatus] = useState(false);
 
-    useEffect(() => {
-        const resetNacosId = () => {
-            dispatch(setNacosId(""));
-        }
-
-        resetNacosId();
-    }, []);
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
